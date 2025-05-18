@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+
+
+
+        .panel {
+            opacity: 0;
+
+        }
+
+        .panel-1 {
+            opacity: 1;
+        }
+
+
+
+
+        .newbody1 {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            display: flex;
+        }
+
+        .newbody2 {
+            min-block-size: 100%;
+            display: grid;
+            place-content: center;
+            /* 设置上下内边距为 30% 视口高度 */
+            padding-block: 30dvh;
+            background: #579abc;
+        }
+
+        .newbody3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(243, 230, 241);
+        }
+
+
+
+
+
+        .banner {
+            width: 100%;
+            height: 110vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+
+        }
+
+        .banner .content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+
+        .banner .content h1 {
+            font-size: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner .content p {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        .shell {
+            position: relative;
+            max-width: 100vh;
+            aspect-ratio: 1/1;
+            display: flex;
+            border-radius: 50%;
+            overflow: hidden;
+            text-align: center;
+            filter: drop-shadow(-30px 30px 10px #006e9d);
+        }
+
+        .text-wrapper {
+            font-size: 60px;
+        }
+
+        span.wave {
+            background: -50% 0%/200% 100% linear-gradient(90deg, #32967048, #0a26ff, #32967048);
+            color: transparent;
+            background-clip: text;
+            animation: flow 4s linear infinite;
+            padding: 0 70px;
+        }
+
+        .text-author {
+            font-size: 80px;
+            text-align: right;
+        }
+
+        .box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+
+        .box:nth-of-type(1) {
+            height: 35%;
+            opacity: 0.6;
+        }
+
+        .box:nth-of-type(2) {
+            height: 67%;
+            opacity: 0.5;
+        }
+
+        .box:nth-of-type(3) {
+            height: 93%;
+            opacity: 0.4;
+        }
+
+        .wave {
+            /* 创建两个径向渐变蒙版，模拟波浪的上下部分 */
+            -webkit-mask: radial-gradient(46.6px at 50% calc(100% - (27px + 38px)),
+                    #fff 99%, #ffffff00 101%), radial-gradient(46.6px at 50% calc(100% + 38px),
+                    #ffffff00 99%, #fff 101%) repeat-x;
+            /* 设置蒙版的大小，使波浪在水平上重复 */
+            -webkit-mask-size: calc(4*27px) 100%;
+            /* 设置蒙版的初始位置，调整波浪的位置 */
+            -webkit-mask-position: calc(50% - 2*27px) 0, 50% calc(100% - 27px);
+            animation: flow 5s linear infinite;
+        }
+
+
+
+
+
+
+
+
+
+        @keyframes flow {
+            100% {
+                /* 设置动画结束时的蒙版位置，使波浪看起来在移动 */
+                -webkit-mask-position: calc(50% - 6*27px) 0, calc(50% - 4*27px) calc(200% - 27px);
+            }
+        }
+
+        @keyframes slide-fade-in {
+            from {
+                opacity: 0;
+                box-shadow: none;
+                transform: scale(.8) translateY(15vh);
+            }
+        }
+
+        .cards {
+            display: grid;
+            gap: 2rem;
+            /* 自动排列 */
+            grid-auto-flow: dense;
+            grid-template-columns: repeat(4, 30ch);
+        }
+
+        .card {
+            animation: slide-fade-in both;
+            /* 使用浏览器的视图时间线,允许动画根据视口的变化进行同步 */
+            animation-timeline: view();
+            /* 定义动画时间范围 */
+            animation-range: contain 0% contain 50%;
+            border-radius: 10px;
+            line-height: 6;
+            box-shadow: 0px 8px 20px #00000022;
+            font-size: 32px;
+            letter-spacing: 5px;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom right,
+                    #91defe,
+                    #99c0f9,
+                    #bdb6ec,
+                    #d7b3e3,
+                    #efb3d5,
+                    #f9bccc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card:nth-of-type(4n) {
+            grid-column: span 2;
+        }
+
+        .card:nth-of-type(5n) {
+            grid-column: span 2;
+        }
+
+        .card:nth-of-type(7n) {
+            grid-row: span 2;
+        }
+
+
+
+
+
+
+        .shell1 {
+            width: 90%;
+            height: 700px;
+            display: flex;
+        }
+
+        .box1 {
+            flex: 1;
+            overflow: hidden;
+            transition: .5s;
+            margin: 0 20px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, .5);
+            border-radius: 20px;
+            border: 10px solid #fff;
+            background-color: #fff;
+        }
+
+        .box1>img {
+            width: 200%;
+            height: 85%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .box1>span {
+            font: 200 45px "优设标题黑";
+            text-align: center;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box1:hover {
+            flex-basis: 40%;
+        }
+
+        .box1:hover>img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-1">
+            <div class="newbody1">
+                <div class="banner">
+                    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="Ocean - 19609.mp4" type="video/mp4">
+
+                    </video>
+                    <div class="content">
+                        <h1>You can't cross the sea merely by standing and staring at the water</h1>
+                        <p>光站在那里盯着海面，是没法穿越海洋的。—— 泰戈尔</p>
+                    </div>
+                    <div>
+                        <div class="shell">
+                            <div class="box wave"></div>
+                            <div class="box wave"></div>
+                            <div class="box wave"></div>
+                            <div class="text-wrapper">
+                                <div class="text-content">
+                                    <span class="wave">Think big,</span>
+                                    <br>
+                                    <span class="wave">Tact small.</span>
+                                </div>
+                                <div class="text-author">
+                                    <span class="wave">- Gai</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-2">
+            <div class="newbody2">
+                <div class="cards">
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card"> <img src="./01.png"></div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card"> <img src="./02.png"></div>
+                    <div class="card"> <img src="./03.png"></div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card"> <img src="./04.png"></div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card"> <img src="./05.png"></div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card"> <img src="./06.png"></div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card"> <img src="./07.png"></div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                    <div class="card">TEXT</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel panel-3">
+            <div class="newbody3">
+                <div class="shell1">
+                    <div class="box1">
+                        <img src="./img(1).jpg">
+                        <span>Image</span>
+                    </div>
+                    <div class="box1">
+                        <img src="./img(1).jpg">
+                        <span>Video</span>
+                    </div>
+                    <div class="box1">
+                        <img src="./img(1).jpg">
+                        <span>File</span>
+                    </div>
+                    <div class="box1">
+                        <img src="./img(1).jpg">
+                        <span>Music</span>
+                    </div>
+                    <div class="box1">
+                        <img src="./img(1).jpg">
+                        <span>Lyric</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.addEventListener('scroll', function () {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const panel1 = document.querySelector('.panel-1');
+        const panel2 = document.querySelector('.panel-2');
+        const panel3 = document.querySelector('.panel-3');
+
+        const panel1Height = panel1.offsetHeight;
+        const panel2Start = panel1Height;
+        const panel2End = panel1Height + panel2.offsetHeight;
+
+        const panel3Start = panel2End;
+        const panel3End = panel3Start + panel3.offsetHeight;
+
+        // 计算 panel2 透明度，使用非线性变化（这里用平方函数示例）
+        if (scrollTop >= 0 && scrollTop <= panel2End) {
+            const ratio = Math.min(1, Math.max(0, (scrollTop - 0) / panel1Height));
+            panel2.style.opacity = ratio * ratio;
+        } else {
+            panel2.style.opacity = 0;
+        }
+
+        // 计算 panel3 透明度，使用非线性变化（这里用平方函数示例）
+        if (scrollTop >= panel2Start && scrollTop <= panel3End) {
+            const ratio = Math.min(1, Math.max(0, (scrollTop - panel2Start) / panel2.offsetHeight));
+            panel3.style.opacity = ratio * ratio;
+        } else {
+            panel3.style.opacity = 0;
+        }
+    });
+</script>
+
+</html>
